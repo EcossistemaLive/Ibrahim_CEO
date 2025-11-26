@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Catalisador de CEOs | Ibrahim Boufleur & Live Consultoria</title>
+
+    <!-- Importação de Tipografia (Guia V3) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Ícones Phosphor -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* 1. Núcleo da Identidade Visual (Brand Core) - Tokens Obrigatórios */
+        :root {
+            /* 1.1. Paleta de Cores */
+            --primary-bg: #06192a;
+            --card-bg: #0A243D;
+            --accent-color: #00e800;
+            --text-primary: #ffffff;
+            --text-muted: #cccccc;
+            --text-subtle: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-glow: 0 0 15px rgba(0, 232, 0, 0.4);
+            
+            /* 1.2. Tipografia */
+            --font-primary: 'Poppins', sans-serif;
+            --font-secondary: 'Merriweather', serif;
+        }
+
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utilitários de Texto */
+        h1, h2, h3, h4 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .text-accent {
+            color: var(--accent-color);
+            text-shadow: var(--accent-glow);
+        }
+
+        .font-serif {
+            font-family: var(--font-secondary);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            opacity: 0; /* Para animação */
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(6, 25, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 40px;
+        }
+
+        .project-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(0, 232, 0, 0.05) 0%, rgba(6, 25, 42, 0) 70%);
+            padding-top: 80px; /* Compensar header */
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-family: var(--font-secondary);
+            font-style: italic;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 15px 40px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 232, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 232, 0, 0.5);
+            background-color: #00ff00;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        /* Grid de Jornada */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        /* Seção Mentores */
+        .mentors-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .mentor-profile {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mentor-image {
+            width: 100%;
+            height: 400px;
+            background-color: #1a3c5a; /* Placeholder image bg */
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+        
+        .mentor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .mentor-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .mentor-role {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #04101b;
+            padding: 60px 0;
+            text-align: center;
+            margin-top: 80px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-logo {
+            height: 50px;
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .mentors-wrapper { grid-template-columns: 1fr; }
+            .mentor-image { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <!-- Logo Live Consultoria (Ativo da Marca) -->
+                <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo%20live%20oficial-36.png" alt="Live Consultoria" class="logo-img">
+                <span class="project-tag">Projeto Catalisador</span>
+            </div>
+            <a href="#contato" class="btn" style="padding: 10px 25px; font-size: 0.9rem;">Lista de Espera</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section id="hero" class="is-visible">
+            <div class="container">
+                <h4 class="text-accent" style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">The Catalyst Summit</h4>
+                <h1 class="hero-title">O Catalisador de <span class="text-accent">CEOs</span></h1>
+                <p class="hero-subtitle">
+                    "O CEO comum gerencia processos. O CEO Catalisador acelera reações sem se consumir no processo."<br>
+                    <span style="font-size: 0.9rem; margin-top: 10px; display: block; color: var(--text-subtle);">— Ibrahim Boufleur</span>
+                </p>
+                <div style="margin-top: 40px;">
+                    <a href="#jornada" class="btn">Conhecer o Método</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- O Conceito -->
+        <section id="conceito">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <i class="ph ph-atom" style="font-size: 4rem; color: var(--accent-color); margin-bottom: 20px;"></i>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 30px;">A Química da Aceleração</h2>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
+                        Na química, um catalisador é uma substância que aumenta a velocidade de uma reação sem ser consumida por ela. No mundo dos negócios, esse é o papel do novo líder.
+                    </p>
+                    <p style="font-size: 1.1rem; color: var(--text-muted);">
+                        A maioria dos empresários cresce à custa de sua própria energia vital. O Método Boufleur inverte essa lógica, criando um ecossistema que se retroalimenta.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- A Jornada (3 Pilares) -->
+        <section id="jornada">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 10px;">A Jornada do Catalisador</h2>
+                <p style="text-align: center; color: var(--text-subtle); mb-50">Do código-fonte à expansão de autoridade.</p>
+                
+                <div class="journey-grid">
+                    <!-- Fase 1 -->
+                    <div class="card">
+                        <i class="ph ph-fingerprint card-icon"></i>
+                        <h3 class="text-accent">01. Imersão</h3>
+                        <h4 style="margin-bottom: 15px;">Extração do Código-Fonte</h4>
+                        <p style="color: var(--text-subtle);">
+                            Uma imersão exclusiva para decodificar o método empírico de Ibrahim Boufleur. Vamos mapear os 3 pilares únicos que o tornaram um acelerador de negócios e transformar vivência em metodologia aplicável.
+                        </p>
+                    </div>
+
+                    <!-- Fase 2 -->
+                    <div class="card">
+                        <i class="ph ph-book-open-text card-icon"></i>
+                        <h3 class="text-accent">02. O Livro</h3>
+                        <h4 style="margin-bottom: 15px;">"O Catalisador de CEOs"</h4>
+                        <p style="color: var(--text-subtle);">
+                            A consolidação do método em uma obra literária de alto impacto. Não é apenas um livro, é o cartão de visitas definitivo que estabelece a autoridade intelectual e abre portas para negociações de alto nível.
+                        </p>
+                    </div>
+
+                    <!-- Fase 3 -->
+                    <div class="card">
+                        <i class="ph ph-users-three card-icon"></i>
+                        <h3 class="text-accent">03. The Summit</h3>
+                        <h4 style="margin-bottom: 15px;">Evento Presencial</h4>
+                        <p style="color: var(--text-subtle);">
+                            O ápice da jornada. Um encontro de alto ticket para CEOs que buscam o próximo nível de velocidade. Networking estratégico, M&A e Liderança Antifrágil no mesmo palco.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Os Mentores -->
+        <section id="mentores" style="background-color: rgba(255,255,255,0.02);">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 60px;">As Mentes por Trás do Método</h2>
+                
+                <div class="mentors-wrapper">
+                    <!-- Ibrahim Boufleur -->
+                    <div class="mentor-profile">
+                        <div class="mentor-image">
+                            <!-- Placeholder para foto do Ibrahim -->
+                            <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#0e2a45;">
+                                <i class="ph ph-user" style="font-size: 5rem; opacity: 0.5;"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="mentor-role">O Visionário & Estrategista</span>
+                            <h3 style="font-size: 2rem; margin: 10px 0;">Ibrahim Boufleur</h3>
+                            <p style="color: var(--text-muted); margin-bottom: 15px;" class="font-serif">
+                                CEO, Investidor e Mentor de Negócios. Ibrahim especializou-se em identificar padrões ocultos que travam o crescimento de empresas.
+                            </p>
+                            <p style="color: var(--text-subtle);">
+                                Sua missão é transformar empresários operacionais em catalisadores estratégicos, focando em visão de futuro, M&A e aceleração de resultados.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Luiz Portal -->
+                    <div class="mentor-profile">
+                        <div class="mentor-image">
+                            <!-- Placeholder para foto do Luiz -->
+                            <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#0e2a45;">
+                                <i class="ph ph-user" style="font-size: 5rem; opacity: 0.5;"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="mentor-role">Liderança Antifrágil & Comportamento</span>
+                            <h3 style="font-size: 2rem; margin: 10px 0;">Luiz Portal</h3>
+                            <p style="color: var(--text-muted); margin-bottom: 15px;" class="font-serif">
+                                Consultor Chefe da Live Consultoria e especialista em Liderança e Vendas.
+                            </p>
+                            <p style="color: var(--text-subtle);">
+                                Responsável por garantir que a estrutura suporte a velocidade. Luiz entrega as ferramentas comportamentais para que o líder e sua equipe prosperem no caos e na pressão do crescimento acelerado.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section id="contato" style="text-align: center;">
+            <div class="container">
+                <div class="card" style="background: linear-gradient(45deg, var(--card-bg), rgba(0, 232, 0, 0.05)); border-color: var(--accent-color);">
+                    <h2 style="margin-bottom: 20px;">Pronto para acelerar a reação?</h2>
+                    <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px;">
+                        A imersão para extração do método é o primeiro passo. Entre na lista de espera para o lançamento oficial do projeto.
+                    </p>
+                    <form style="max-width: 400px; margin: 0 auto; display: flex; gap: 10px; flex-direction: column;">
+                        <input type="email" placeholder="Seu melhor e-mail corporativo" style="padding: 15px; border-radius: 5px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.3); color: white;">
+                        <button type="submit" class="btn">Aplicar Agora</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo%20live%20oficial-34.png" alt="Live Consultoria" class="footer-logo">
+            <p style="color: var(--text-subtle); font-size: 0.9rem;">
+                © 2025 Live Consultoria & Ibrahim Boufleur.<br>
+                Todos os direitos reservados.
+            </p>
+            <div style="margin-top: 20px; font-size: 0.8rem; color: #444;">
+                Desenvolvido com tecnologia AgeQuodAgis
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Animação (Intersection Observer) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const targets = document.querySelectorAll("section");
+            
+            const options = {
+                root: null,
+                threshold: 0.15,
+                rootMargin: "0px"
+            };
+
+            const callback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(callback, options);
+            targets.forEach(target => {
+                observer.observe(target);
+            });
+        });
+    </script>
+</body>
+</html>
