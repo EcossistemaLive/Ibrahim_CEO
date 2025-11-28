@@ -204,6 +204,40 @@
             margin-top: 50px;
         }
 
+        /* Mentoria Program Grid */
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .module-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .module-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--accent-color);
+        }
+
+        .module-number {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
         /* Seção Mentores */
         .mentors-wrapper {
             display: grid;
@@ -232,9 +266,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Alteração: Centralizar no topo para focar no rosto */
             object-position: center top; 
-            /* Alteração: Removido o grayscale, sempre colorido */
             filter: none;
         }
 
@@ -244,6 +276,15 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
+        }
+
+        .highlight-box {
+            background: rgba(0, 232, 0, 0.05);
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
         }
 
         /* Footer */
@@ -322,35 +363,213 @@
                 <p style="text-align: center; color: var(--text-subtle); mb-50">Do código-fonte à expansão de autoridade.</p>
                 
                 <div class="journey-grid">
-                    <!-- Fase 1 -->
                     <div class="card">
                         <i class="ph ph-fingerprint card-icon"></i>
                         <h3 class="text-accent">01. Imersão</h3>
                         <h4 style="margin-bottom: 15px;">Extração do Código-Fonte</h4>
-                        <p style="color: var(--text-subtle);">
-                            Uma imersão exclusiva para decodificar o método empírico de Ibrahim Boufleur. Vamos mapear os 3 pilares únicos que o tornaram um acelerador de negócios e transformar vivência em metodologia aplicável.
-                        </p>
+                        <p style="color: var(--text-subtle);">Decodificação do método empírico de Ibrahim Boufleur. Mapeamento dos 3 pilares únicos de aceleração.</p>
                     </div>
-
-                    <!-- Fase 2 -->
                     <div class="card">
                         <i class="ph ph-book-open-text card-icon"></i>
                         <h3 class="text-accent">02. O Livro</h3>
                         <h4 style="margin-bottom: 15px;">"O Catalisador de CEOs"</h4>
-                        <p style="color: var(--text-subtle);">
-                            A consolidação do método em uma obra literária de alto impacto. Não é apenas um livro, é o cartão de visitas definitivo que estabelece a autoridade intelectual e abre portas para negociações de alto nível.
-                        </p>
+                        <p style="color: var(--text-subtle);">A consolidação do método em uma obra literária. O cartão de visitas definitivo que estabelece autoridade intelectual.</p>
                     </div>
-
-                    <!-- Fase 3 -->
                     <div class="card">
                         <i class="ph ph-users-three card-icon"></i>
                         <h3 class="text-accent">03. The Summit</h3>
                         <h4 style="margin-bottom: 15px;">Evento Presencial</h4>
-                        <p style="color: var(--text-subtle);">
-                            O ápice da jornada. Um encontro de alto ticket para CEOs que buscam o próximo nível de velocidade. Networking estratégico, M&A e Liderança Antifrágil no mesmo palco.
-                        </p>
+                        <p style="color: var(--text-subtle);">O ápice da jornada. Um encontro de alto ticket para CEOs focados em M&A, Networking e Velocidade.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOVO: Programa de Mentoria -->
+        <section id="mentoria-program" style="background: linear-gradient(180deg, var(--primary-bg) 0%, rgba(10,36,61,0.5) 100%);">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <span class="project-tag">O Método na Prática</span>
+                    <h2 style="font-size: 2.5rem; margin-top: 15px;">Mentoria Líder Rentável</h2>
+                    <p style="color: var(--text-muted); margin-top: 15px;">
+                        O playbook operacional para quem quer crescer com controle e consistência.
+                        <br><strong>Duração: 14 Semanas.</strong>
+                    </p>
+                </div>
+
+                <!-- Destaques da Metodologia -->
+                <div class="highlight-box">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                        <div>
+                            <i class="ph ph-chalkboard-teacher" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                            <h3 style="margin: 10px 0;">Encontros Semanais com Ibrahim</h3>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">
+                                Acesso direto à mente do estrategista. Uma reunião semanal exclusiva para destravar gargalos, validar estratégias e receber direcionamento de alto nível.
+                            </p>
+                        </div>
+                        <div>
+                            <i class="ph ph-wrench" style="font-size: 2.5rem; color: var(--accent-color);"></i>
+                            <h3 style="margin: 10px 0;">Especialistas Técnicos por Área</h3>
+                            <p style="font-size: 0.95rem; color: var(--text-muted);">
+                                Você não caminha sozinho. Especialistas dedicados acompanham a implementação de cada módulo (Financeiro, Jurídico, Marketing), garantindo execução técnica impecável.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grade Curricular -->
+                <h3 style="text-align: center; margin-top: 50px;">Grade Curricular: Do Zero ao Líder Rentável</h3>
+                <div class="module-grid">
+                    <!-- Prólogo -->
+                    <div class="module-item">
+                        <i class="ph ph-brain" style="font-size: 1.5rem; color: var(--accent-color);"></i>
+                        <div>
+                            <span class="module-number">Prólogo</span>
+                            <h4>Mentalidade do Dono</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">A construção da mentalidade de vitória, antifragilidade e foco em resultados.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Módulo 1 -->
+                    <div class="module-item">
+                        <i class="ph ph-flag" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 01</span>
+                            <h4>Fundamentos</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Governança mínima, acordo de sócios, estrutura societária e planejamento de longo prazo.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 2 -->
+                    <div class="module-item">
+                        <i class="ph ph-package" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 02</span>
+                            <h4>Produto & Valor</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Precificação, nicho, proposta única de valor e análise de Market Share.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 3 -->
+                    <div class="module-item">
+                        <i class="ph ph-megaphone" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 03</span>
+                            <h4>Marketing 360º</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Posicionamento, Branding, funis de tráfego pago/orgânico e gatilhos mentais.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 4 -->
+                    <div class="module-item">
+                        <i class="ph ph-shopping-cart" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 04</span>
+                            <h4>Comercial</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Máquina de vendas, script de negociação Harvard, gestão de leads e fechamento.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 5 -->
+                    <div class="module-item">
+                        <i class="ph ph-users" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 05</span>
+                            <h4>Pessoas & RH</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Recrutamento, cultura, KPIs, remuneração variável e rituais de gestão.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 6 -->
+                    <div class="module-item">
+                        <i class="ph ph-chart-line-up" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 06</span>
+                            <h4>Finanças</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">DRE, Fluxo de Caixa, Capital de Giro e separação PF/PJ.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 7 -->
+                    <div class="module-item">
+                        <i class="ph ph-calculator" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 07</span>
+                            <h4>Tributário</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Planejamento fiscal, compliance e estratégias para eficiência tributária.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 8 -->
+                    <div class="module-item">
+                        <i class="ph ph-gears" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 08</span>
+                            <h4>Operação & PMO</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Mapeamento de processos (AS-IS/TO-BE), gestão de projetos e logística.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 9 -->
+                    <div class="module-item">
+                        <i class="ph ph-robot" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 09</span>
+                            <h4>Tecnologia & IA</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">ERP, CRM, Inteligência Artificial aplicada e Cyber Security.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 10 -->
+                    <div class="module-item">
+                        <i class="ph ph-bank" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 10</span>
+                            <h4>Crédito Avançado</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Linhas especiais, FIDC, garantias, covenants e alavancagem inteligente.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 11 -->
+                    <div class="module-item">
+                        <i class="ph ph-gavel" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 11</span>
+                            <h4>Estrutura Jurídica</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Blindagem patrimonial, Holding, contratos críticos e propriedade intelectual.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 12 -->
+                    <div class="module-item">
+                        <i class="ph ph-first-aid-kit" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 12</span>
+                            <h4>Gestão de Crise</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Renegociação de dívidas, Recuperação Judicial e tomada de decisão sob pressão.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 13 -->
+                    <div class="module-item">
+                        <i class="ph ph-buildings" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 13</span>
+                            <h4>Setor Público</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Licitações, Lei 14.133/2021 e escalabilidade via contratos governamentais.</p>
+                        </div>
+                    </div>
+
+                    <!-- Módulo 14 -->
+                    <div class="module-item">
+                        <i class="ph ph-chart-bar" style="font-size: 1.5rem; color: var(--text-muted);"></i>
+                        <div>
+                            <span class="module-number">Módulo 14</span>
+                            <h4>Growth & M&A</h4>
+                            <p style="font-size: 0.85rem; color: var(--text-subtle); margin-top: 5px;">Alavancas de crescimento, expansão nacional, Equity e estratégias de Exit.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
