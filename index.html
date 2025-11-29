@@ -29,6 +29,11 @@
             /* 1.2. Tipografia */
             --font-primary: 'Poppins', sans-serif;
             --font-secondary: 'Merriweather', serif;
+
+            /* Espaçamentos (Adaptado do V5 para V3) */
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
         }
 
         /* Reset e Base */
@@ -122,6 +127,25 @@
             letter-spacing: 1px;
         }
 
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
         /* Hero Section */
         #hero {
             height: 100vh;
@@ -202,6 +226,154 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 50px;
+        }
+
+        /* --- ESTILOS DO CRONOGRAMA (Timeline V5 Integrada) --- */
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Linha Central */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px; /* Mobile first: linha na esquerda */
+            width: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--space-lg);
+            padding-left: 60px; /* Espaço para a linha no mobile */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .timeline-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Marcador da Timeline */
+        .timeline-marker {
+            position: absolute;
+            left: 12px; /* Ajustado para a linha mobile */
+            top: 24px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-bg);
+            border: 4px solid var(--accent-color);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: var(--accent-glow);
+        }
+
+        .timeline-content {
+            /* Herda estilos do .card */
+            padding: 30px;
+        }
+
+        .timeline-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        
+        .phase-badge {
+            background: rgba(0, 232, 0, 0.15);
+            color: var(--accent-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid var(--accent-color);
+        }
+
+        .timeline-time {
+            font-family: var(--font-secondary);
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .content-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .content-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            color: var(--text-muted);
+        }
+        
+        .content-list li::before {
+            content: '✓';
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Desktop Timeline Adjustment */
+        @media (min-width: 768px) {
+            .timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .timeline-item {
+                width: 50%;
+                padding-left: 0;
+            }
+
+            .timeline-marker {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            /* Alternância Esquerda/Direita */
+            .timeline-item:nth-child(odd) {
+                left: 0;
+                padding-right: 50px;
+                text-align: right;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 50%;
+                padding-left: 50px;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-header {
+                align-items: flex-end; /* Alinha badge e titulo a direita */
+            }
+            
+            .timeline-item:nth-child(odd) .content-list li {
+                justify-content: flex-end; /* Alinha lista a direita */
+                flex-direction: row-reverse;
+            }
+            
+            .timeline-item:nth-child(odd) .content-list li::before {
+                /* Ajuste do ícone na reversão se necessário, ou manter flex-direction normal */
+                /* Melhor manter o flow normal do texto, apenas alinhar o bloco */
+            }
         }
 
         /* Mentoria Program Grid */
@@ -307,6 +479,7 @@
             .hero-title { font-size: 2.5rem; }
             .mentors-wrapper { grid-template-columns: 1fr; }
             .mentor-image { height: 300px; }
+            .nav-links { display: none; } /* Simplificação mobile */
         }
     </style>
 </head>
@@ -319,6 +492,11 @@
                 <!-- Logo Live Consultoria (Ativo da Marca) -->
                 <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo%20live%20oficial-36.png" alt="Live Consultoria" class="logo-img">
                 <span class="project-tag">Projeto Catalisador</span>
+            </div>
+            <div class="nav-links">
+                <a href="#jornada" class="nav-link">Jornada</a>
+                <a href="#cronograma" class="nav-link" style="color: var(--accent-color);">Cronograma</a>
+                <a href="#mentoria-program" class="nav-link">Mentoria</a>
             </div>
             <a href="#contato" class="btn" style="padding: 10px 25px; font-size: 0.9rem;">Lista de Espera</a>
         </div>
@@ -385,7 +563,91 @@
             </div>
         </section>
 
-        <!-- NOVO: Programa de Mentoria -->
+        <!-- NOVO: Seção Cronograma da Imersão (Timeline Integrada) -->
+        <section id="cronograma" class="timeline-section" style="background-color: rgba(255,255,255,0.01);">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 60px;">Cronograma da Reação</h2>
+                
+                <div class="timeline">
+                    
+                    <!-- BLOCO 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="card timeline-content">
+                            <span class="timeline-time">Pré-Evento / Aquecimento</span>
+                            <div class="timeline-header">
+                                <span class="phase-badge">Bloco 01</span>
+                                <h3>Recepção e Reação Inicial</h3>
+                            </div>
+                            <p style="color: var(--text-subtle);">O foco é eletrizar o ambiente e promover a "química da conexão". Nada de conversas mornas.</p>
+                            <ul class="content-list">
+                                <li><strong>Welcome Drink "Catalisador":</strong> Bebida exclusiva neon/esfumaçante.</li>
+                                <li><strong>Crachás Cromáticos:</strong> Separação estratégica por cores.</li>
+                                <li><strong>Networking Guiado:</strong> Quebra de gelo imediata.</li>
+                                <li><strong>Entrada Eletrizante:</strong> Contagem regressiva, luzes e som.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- BLOCO 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="card timeline-content">
+                            <span class="timeline-time">Manhã - Conteúdo Denso</span>
+                            <div class="timeline-header">
+                                <span class="phase-badge">Bloco 02</span>
+                                <h3>A Jornada do CEO Catalisador</h3>
+                            </div>
+                            <p style="color: var(--text-subtle);">Estabelecendo os pilares conceituais e a mentalidade necessária para a aceleração.</p>
+                            <ul class="content-list">
+                                <li><strong>O Manifesto:</strong> Definição emocional do que é ser um Catalisador.</li>
+                                <li><strong>A Trajetória (Ibrahim):</strong> De 100k a 100mi. As 3 Mentalidades (3M).</li>
+                                <li><strong>Liderança Antifrágil (Luiz):</strong> A morte do "chefe" e a necessidade da reação.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- BLOCO 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="card timeline-content">
+                            <span class="timeline-time">Início da Tarde</span>
+                            <div class="timeline-header">
+                                <span class="phase-badge">Bloco 03</span>
+                                <h3>Dinâmica da Reação</h3>
+                            </div>
+                            <p style="color: var(--text-subtle);">Transformando teoria em prática. O conhecimento só se fixa sob pressão e interação.</p>
+                            <ul class="content-list">
+                                <li><strong>Formação de Grupos:</strong> Baseada na cromática dos crachás.</li>
+                                <li><strong>Game dos Cards:</strong> Chefe vs. Líder Frágil vs. Líder Antifrágil.</li>
+                                <li><strong>O Debate:</strong> Interpelações diretas de Ibrahim e Luiz.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- BLOCO 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="card timeline-content">
+                            <span class="timeline-time">Fechamento</span>
+                            <div class="timeline-header">
+                                <span class="phase-badge">Bloco 04</span>
+                                <h3>Elementos e "A Receita"</h3>
+                            </div>
+                            <p style="color: var(--text-subtle);">Apresentação dos ingredientes finais para que a reação continue fora do evento.</p>
+                            <ul class="content-list">
+                                <li><strong>Talk Show Estratégico:</strong> Os 14 Módulos do Playbook apresentados.</li>
+                                <li><strong>Pilares:</strong> Organizacional, Financeiro, Jurídico e Estratégico.</li>
+                                <li><strong>Call to Action:</strong> Convite para a Mentoria Líder Rentável.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Programa de Mentoria -->
         <section id="mentoria-program" style="background: linear-gradient(180deg, var(--primary-bg) 0%, rgba(10,36,61,0.5) 100%);">
             <div class="container">
                 <div style="text-align: center; max-width: 800px; margin: 0 auto;">
@@ -655,6 +917,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const targets = document.querySelectorAll("section");
+            const timelineItems = document.querySelectorAll(".timeline-item");
             
             const options = {
                 root: null,
@@ -665,15 +928,32 @@
             const callback = (entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
+                        // Trata animação de seções
+                        if(entry.target.tagName === 'SECTION') {
+                            entry.target.classList.add('is-visible');
+                        }
+                        
+                        // Trata animação da timeline com delay sequencial
+                        if(entry.target.classList.contains('timeline-item')) {
+                            // Pequeno delay para efeito cascata
+                            setTimeout(() => {
+                                entry.target.classList.add('is-visible');
+                            }, 100); 
+                        }
+                        
                         observer.unobserve(entry.target);
                     }
                 });
             };
 
             const observer = new IntersectionObserver(callback, options);
+            
             targets.forEach(target => {
                 observer.observe(target);
+            });
+
+            timelineItems.forEach(item => {
+                observer.observe(item);
             });
         });
     </script>
