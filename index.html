@@ -228,7 +228,7 @@
             margin-top: 50px;
         }
 
-        /* --- ESTILOS DO CRONOGRAMA (Timeline V5 Integrada) --- */
+        /* --- ESTILOS DO CRONOGRAMA (Timeline V5 Integrada & Corrigida) --- */
         .timeline-section {
             position: relative;
         }
@@ -254,7 +254,8 @@
         .timeline-item {
             position: relative;
             margin-bottom: var(--space-lg);
-            padding-left: 60px; /* Espaço para a linha no mobile */
+            /* CORREÇÃO: Aumentado o padding para afastar o card da bolinha no mobile */
+            padding-left: 80px; 
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -265,13 +266,14 @@
             transform: translateY(0);
         }
 
-        /* Marcador da Timeline */
+        /* Marcador da Timeline (Bolinha) */
         .timeline-marker {
             position: absolute;
-            left: 12px; /* Ajustado para a linha mobile */
-            top: 24px;
-            width: 20px;
-            height: 20px;
+            /* CORREÇÃO: Ajustado a posição para ficar centralizado na linha no mobile */
+            left: 10px; 
+            top: 30px; /* Alinhado com o topo do card */
+            width: 24px;
+            height: 24px;
             background-color: var(--primary-bg);
             border: 4px solid var(--accent-color);
             border-radius: 50%;
@@ -280,8 +282,11 @@
         }
 
         .timeline-content {
-            /* Herda estilos do .card */
+            /* Herda estilos do .card e ajusta o padding interno */
             padding: 30px;
+            /* Garante que o card fique acima da linha, mas abaixo do marcador se necessário */
+            position: relative;
+            z-index: 1;
         }
 
         .timeline-header {
@@ -343,36 +348,36 @@
                 padding-left: 0;
             }
 
+            /* CORREÇÃO: Reposicionamento da bolinha no desktop para o centro exato */
             .timeline-marker {
                 left: 50%;
+                top: 30px;
                 transform: translateX(-50%);
+                margin-left: 0; /* Remove margens antigas */
             }
 
             /* Alternância Esquerda/Direita */
             .timeline-item:nth-child(odd) {
                 left: 0;
-                padding-right: 50px;
+                /* CORREÇÃO: Padding ajustado para não encostar na linha central */
+                padding-right: 50px; 
                 text-align: right;
             }
 
             .timeline-item:nth-child(even) {
                 left: 50%;
-                padding-left: 50px;
+                /* CORREÇÃO: Padding ajustado para não encostar na linha central */
+                padding-left: 50px; 
                 text-align: left;
             }
 
             .timeline-item:nth-child(odd) .timeline-header {
-                align-items: flex-end; /* Alinha badge e titulo a direita */
+                align-items: flex-end; 
             }
             
             .timeline-item:nth-child(odd) .content-list li {
-                justify-content: flex-end; /* Alinha lista a direita */
+                justify-content: flex-end; 
                 flex-direction: row-reverse;
-            }
-            
-            .timeline-item:nth-child(odd) .content-list li::before {
-                /* Ajuste do ícone na reversão se necessário, ou manter flex-direction normal */
-                /* Melhor manter o flow normal do texto, apenas alinhar o bloco */
             }
         }
 
