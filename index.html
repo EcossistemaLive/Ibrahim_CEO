@@ -228,7 +228,7 @@
             margin-top: 50px;
         }
 
-        /* --- ESTILOS DO CRONOGRAMA (Timeline V5 Integrada & Corrigida) --- */
+        /* --- ESTILOS DO CRONOGRAMA (CORRIGIDO V2) --- */
         .timeline-section {
             position: relative;
         }
@@ -239,13 +239,15 @@
             margin: 0 auto;
         }
 
-        /* Linha Central */
+        /* CONFIGURAÇÃO MOBILE (Padrão) 
+           Linha e marcadores alinhados à esquerda
+        */
         .timeline::before {
             content: '';
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 20px; /* Mobile first: linha na esquerda */
+            left: 30px; /* Linha fixa na esquerda */
             width: 4px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
@@ -254,8 +256,7 @@
         .timeline-item {
             position: relative;
             margin-bottom: var(--space-lg);
-            /* CORREÇÃO: Aumentado o padding para afastar o card da bolinha no mobile */
-            padding-left: 80px; 
+            padding-left: 80px; /* Afasta o conteúdo da linha */
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -266,25 +267,24 @@
             transform: translateY(0);
         }
 
-        /* Marcador da Timeline (Bolinha) */
+        /* Marcador (Bolinha) - Config Mobile */
         .timeline-marker {
             position: absolute;
-            /* CORREÇÃO: Ajustado a posição para ficar centralizado na linha no mobile */
-            left: 10px; 
-            top: 30px; /* Alinhado com o topo do card */
-            width: 24px;
-            height: 24px;
+            left: 30px; /* Alinhado com a linha */
+            top: 30px;
+            width: 20px;
+            height: 20px;
             background-color: var(--primary-bg);
             border: 4px solid var(--accent-color);
             border-radius: 50%;
             z-index: 2;
             box-shadow: var(--accent-glow);
+            transform: translateX(-50%); /* Centraliza na linha */
         }
 
         .timeline-content {
-            /* Herda estilos do .card e ajusta o padding interno */
+            /* Herda estilos do .card */
             padding: 30px;
-            /* Garante que o card fique acima da linha, mas abaixo do marcador se necessário */
             position: relative;
             z-index: 1;
         }
@@ -336,39 +336,29 @@
             font-weight: bold;
         }
 
-        /* Desktop Timeline Adjustment */
+        /* CONFIGURAÇÃO DESKTOP (Espinha Dorsal) 
+           Linha no centro, itens alternados, bolinhas no centro exato.
+        */
         @media (min-width: 768px) {
             .timeline::before {
-                left: 50%;
-                transform: translateX(-50%);
+                left: 50%; /* Linha vai para o meio */
             }
 
             .timeline-item {
                 width: 50%;
-                padding-left: 0;
+                padding-left: 0; /* Reseta padding mobile */
             }
 
-            /* CORREÇÃO: Reposicionamento da bolinha no desktop para o centro exato */
-            .timeline-marker {
-                left: 50%;
-                top: 30px;
-                transform: translateX(-50%);
-                margin-left: 0; /* Remove margens antigas */
-            }
-
-            /* Alternância Esquerda/Direita */
+            /* ÍMPARES (Esquerda) */
             .timeline-item:nth-child(odd) {
                 left: 0;
-                /* CORREÇÃO: Padding ajustado para não encostar na linha central */
-                padding-right: 50px; 
+                padding-right: 60px; /* Espaço para não tocar no centro */
                 text-align: right;
             }
-
-            .timeline-item:nth-child(even) {
-                left: 50%;
-                /* CORREÇÃO: Padding ajustado para não encostar na linha central */
-                padding-left: 50px; 
-                text-align: left;
+            
+            /* Reposiciona a bolinha do ímpar para a direita (centro da tela) */
+            .timeline-item:nth-child(odd) .timeline-marker {
+                left: 100%; 
             }
 
             .timeline-item:nth-child(odd) .timeline-header {
@@ -378,6 +368,18 @@
             .timeline-item:nth-child(odd) .content-list li {
                 justify-content: flex-end; 
                 flex-direction: row-reverse;
+            }
+
+            /* PARES (Direita) */
+            .timeline-item:nth-child(even) {
+                left: 50%;
+                padding-left: 60px; /* Espaço para não tocar no centro */
+                text-align: left;
+            }
+
+            /* Reposiciona a bolinha do par para a esquerda (centro da tela) */
+            .timeline-item:nth-child(even) .timeline-marker {
+                left: 0;
             }
         }
 
