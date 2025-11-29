@@ -457,13 +457,48 @@
             font-weight: 600;
         }
 
+        /* Highlight Box (CORRIGIDO) */
         .highlight-box {
             background: rgba(0, 232, 0, 0.05);
             border: 1px solid var(--accent-color);
             border-radius: 10px;
             padding: 30px;
-            text-align: center;
             margin: 40px 0;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between; /* Texto à esq, ícone à dir */
+            text-align: left;
+            gap: 20px;
+        }
+
+        .highlight-content {
+            flex: 1; /* Ocupa o espaço restante */
+        }
+
+        .highlight-item i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            flex-shrink: 0; /* Impede que o ícone encolha */
+        }
+
+        @media (max-width: 768px) {
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+            .highlight-item {
+                flex-direction: column-reverse; /* Ícone em cima no mobile se preferir, ou manter row */
+                align-items: center;
+                text-align: center;
+            }
         }
 
         /* Footer */
@@ -666,22 +701,26 @@
                     </p>
                 </div>
 
-                <!-- Destaques da Metodologia -->
+                <!-- Destaques da Metodologia (CORRIGIDO) -->
                 <div class="highlight-box">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                        <div>
-                            <i class="ph ph-chalkboard-teacher" style="font-size: 2.5rem; color: var(--accent-color);"></i>
-                            <h3 style="margin: 10px 0;">Encontros Semanais com Ibrahim</h3>
-                            <p style="font-size: 0.95rem; color: var(--text-muted);">
-                                Acesso direto à mente do estrategista. Uma reunião semanal exclusiva para destravar gargalos, validar estratégias e receber direcionamento de alto nível.
-                            </p>
+                    <div class="highlight-grid">
+                        <div class="highlight-item">
+                            <div class="highlight-content">
+                                <h3 style="margin: 0 0 10px 0;">Encontros Semanais com Ibrahim</h3>
+                                <p style="font-size: 0.95rem; color: var(--text-muted);">
+                                    Acesso direto à mente do estrategista. Uma reunião semanal exclusiva para destravar gargalos, validar estratégias e receber direcionamento de alto nível.
+                                </p>
+                            </div>
+                            <i class="ph ph-chalkboard-teacher"></i>
                         </div>
-                        <div>
-                            <i class="ph ph-wrench" style="font-size: 2.5rem; color: var(--accent-color);"></i>
-                            <h3 style="margin: 10px 0;">Especialistas Técnicos por Área</h3>
-                            <p style="font-size: 0.95rem; color: var(--text-muted);">
-                                Você não caminha sozinho. Especialistas dedicados acompanham a implementação de cada módulo (Financeiro, Jurídico, Marketing), garantindo execução técnica impecável.
-                            </p>
+                        <div class="highlight-item">
+                            <div class="highlight-content">
+                                <h3 style="margin: 0 0 10px 0;">Especialistas Técnicos por Área</h3>
+                                <p style="font-size: 0.95rem; color: var(--text-muted);">
+                                    Você não caminha sozinho. Especialistas dedicados acompanham a implementação de cada módulo (Financeiro, Jurídico, Marketing), garantindo execução técnica impecável.
+                                </p>
+                            </div>
+                            <i class="ph ph-wrench"></i>
                         </div>
                     </div>
                 </div>
